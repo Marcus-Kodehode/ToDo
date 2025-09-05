@@ -1,0 +1,200 @@
+<div class="max-w-4xl mx-auto p-6 space-y-6">
+  <!-- header / stats -->
+  <div class="rounded-xl border border-white/10 bg-white/5 p-6">
+    <div class="flex flex-wrap gap-3 items-center justify-between">
+      <h2 class="text-xl font-bold">Min Todo-liste</h2>
+      <div class="flex flex-wrap gap-2">
+        <span
+          class="px-2 py-1 text-sm rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30"
+        >
+          {{ active().length }} Active
+        </span>
+        <span
+          class="px-2 py-1 text-sm rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30"
+        >
+          {{ done().length }} Done
+        </span>
+        <span
+          class="px-2 py-1 text-sm rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30"
+        >
+          {{ progress() }}% Progress
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- form -->
+  <div class="rounded-xl border border-white/10 bg-white/5 p-6">
+    <div class="mb-4">
+      <input
+        [ngModel]="newText()"
+        (ngModelChange)="newText.set($event)"
+        [ngModelOptions]="{ standalone: true }"
+        name="task"
+        class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-3 outline-none focus:ring-2 ring-emerald-400/40"
+        placeholder="Hva skal gjøres?"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <input
+          [ngModel]="dueDate()"
+          (ngModelChange)="dueDate.set($event)"
+          [ngModelOptions]="{ standalone: true }"
+          name="dueDate"
+          type="date"
+          class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+          placeholder="Forfallsdato"
+        />
+      </div>
+
+      <div>
+        <input
+          [ngModel]="dueTime()"
+          (ngModelChange)="dueTime.set($event)"
+          [ngModelOptions]="{ standalone: true }"
+          name="dueTime"
+          type="time"
+          class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+          placeholder="Starttid"
+        />
+      </div>
+
+      <div>
+        <select
+          [ngModel]="category()"
+          (ngModelChange)="category.set($event)"
+          [ngModelOptions]="{ standalone: true }"
+          name="category"
+          class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+        >
+          <option value="" disabled>Velg kategori</option>
+          <option value="WORK">Work</option>
+          <option value="HOME">Home</option>
+          <option value="SCHOOL">School</option>
+          <option value="TRAINING">Training</option>
+          <option value="HEALTH">Health</option>
+        </select>
+      </div>
+
+      <div>
+        <select
+          [ngModel]="priority()"
+          (ngModelChange)="priority.set($event)"
+          [ngModelOptions]="{ standalone: true }"
+          name="priority"
+          class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+        >
+          <option value="" disabled>Set priority…</option>
+          <option value="high">🔥 High</option>
+          <option value="medium">⚡ Medium</option>
+          <option value="low">🌱 Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+      <input
+        [ngModel]="link()"
+        (ngModelChange)="link.set($event)"
+        [ngModelOptions]="{ standalone: true }"
+        name="link"
+        type="url"
+        class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+        placeholder="Lenke (valgfritt)"
+      />
+
+      <input
+        [ngModel]="note()"
+        (ngModelChange)="note.set($event)"
+        [ngModelOptions]="{ standalone: true }"
+        name="note"
+        type="text"
+        class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+        placeholder="Notat / beskrivelse"
+      />
+    </div>
+
+    <div class="mt-5 flex gap-3">
+      <button
+        (click)="add()"
+        class="flex-1 rounded-lg bg-emerald-500 py-2 font-semibold text-slate-900 hover:bg-emerald-400 transition"
+      >
+        + Legg til
+      </button>
+      <button
+        (click)="clearCompleted()"
+        class="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition"
+      >
+        Fjern ferdige
+      </button>
+    </div>
+  </div>
+
+  <!-- aktive -->
+  <div class="space-y-3">
+    <h3 class="text-lg font-bold">Aktive</h3>
+    <div
+      *ngFor="let t of active()"
+      class="rounded-lg border border-white/10 bg-white/5 p-4 flex items-start gap-3"
+    >
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-2">
+          <h4 class="font-semibold truncate">{{ t.text }}</h4>
+          <div class="flex gap-1">
+            <button
+              (click)="toggle(t)"
+              class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+            >
+              Done
+            </button>
+            <button
+              (click)="remove(t)"
+              class="px-2 py-1 rounded bg-red-500/20 text-red-300 border border-red-500/30"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-2 text-sm text-white/60 flex flex-wrap gap-3">
+          <span *ngIf="t.dueDate">📅 {{ t.dueDate }}</span>
+          <span *ngIf="t.dueTime">⏱️ {{ t.dueTime }}</span>
+          <a
+            *ngIf="t.link"
+            [href]="t.link"
+            target="_blank"
+            class="text-emerald-300 hover:text-emerald-200"
+            >🔗 Link</a
+          >
+        </div>
+
+        <p *ngIf="t.note" class="mt-2 text-sm text-white/70">{{ t.note }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="active().length === 0" class="text-white/60">Ingen aktive oppgaver.</div>
+  </div>
+
+  <!-- ferdige -->
+  <div class="space-y-3">
+    <h3 class="text-lg font-bold">Ferdige</h3>
+    <div
+      *ngFor="let t of done()"
+      class="rounded-lg border border-white/10 bg-white/5 p-4 opacity-70"
+    >
+      <div class="flex items-center justify-between">
+        <h4 class="font-semibold line-through">{{ t.text }}</h4>
+        <button
+          (click)="toggle(t)"
+          class="px-2 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30"
+        >
+          Angre
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="done().length === 0" class="text-white/60">Ingen ferdige oppgaver ennå.</div>
+  </div>
+</div>

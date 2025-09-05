@@ -1,0 +1,27 @@
+<div
+  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-800 text-white"
+>
+  <div class="w-full max-w-md bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8">
+    <div class="flex flex-col items-center space-y-3">
+      <span class="text-4xl">✅</span>
+      <h1 class="text-2xl font-bold">Hva heter du?</h1>
+      <p class="text-slate-300 text-center">Din personlige Todo-liste i stjernestøvet</p>
+    </div>
+
+    <div class="mt-6 space-y-4">
+      <input
+        [(ngModel)]="name"
+        type="text"
+        placeholder="Fyll inn navnet ditt"
+        class="w-full rounded-lg px-4 py-2 bg-slate-800/50 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      />
+
+      <button
+        (click)="save()"
+        class="w-full rounded-lg bg-emerald-500 py-2 font-semibold text-slate-900 hover:bg-emerald-400 transition"
+      >
+        Fortsett
+      </button>
+    </div>
+  </div>
+</div>
