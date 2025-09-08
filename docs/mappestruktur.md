@@ -1,0 +1,21 @@
+src/
+  app/
+    features/
+      todo/
+        todo.html
+        todo.ts
+      calculator/
+        calculator.html
+        calculator.ts
+      easter-egg/
+        easter-egg.html
+        easter-egg.ts
+      start/
+        start.html
+        start.ts
+    models/
+        task.ts
+    services/
+        todo.store.ts
+    app.ts
+    app.html
