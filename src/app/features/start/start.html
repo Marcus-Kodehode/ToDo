@@ -4,15 +4,15 @@
   <div class="w-full max-w-md bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8">
     <div class="flex flex-col items-center space-y-3">
       <span class="text-4xl">✅</span>
-      <h1 class="text-2xl font-bold">Hva heter du?</h1>
-      <p class="text-slate-300 text-center">Din personlige Todo-liste i stjernestøvet</p>
+      <h1 class="text-2xl font-bold">What's your name?</h1>
+      <p class="text-slate-300 text-center">Your personal Todo-list in stardust</p>
     </div>
 
     <div class="mt-6 space-y-4">
       <input
         [(ngModel)]="name"
         type="text"
-        placeholder="Fyll inn navnet ditt"
+        placeholder="Enter your name"
         class="w-full rounded-lg px-4 py-2 bg-slate-800/50 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500"
       />
 
@@ -20,7 +20,7 @@
         (click)="save()"
         class="w-full rounded-lg bg-emerald-500 py-2 font-semibold text-slate-900 hover:bg-emerald-400 transition"
       >
-        Fortsett
+        Continue
       </button>
     </div>
   </div>
