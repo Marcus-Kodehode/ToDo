@@ -1,9 +1,10 @@
+/* styles.css */
 @import 'tailwindcss';
 
-:root {
-  color-scheme: dark;
-}
-
-body {
-  @apply bg-slate-900 text-slate-100;
+/* Global styling */
+@layer base {
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  }
 }
