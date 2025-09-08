@@ -2,7 +2,7 @@
   <!-- header / stats -->
   <div class="rounded-xl border border-white/10 bg-white/5 p-6">
     <div class="flex flex-wrap gap-3 items-center justify-between">
-      <h2 class="text-xl font-bold">Min Todo-liste</h2>
+      <h2 class="text-xl font-bold">My Todo-list</h2>
       <div class="flex flex-wrap gap-2">
         <span
           class="px-2 py-1 text-sm rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30"
@@ -32,7 +32,7 @@
         [ngModelOptions]="{ standalone: true }"
         name="task"
         class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-3 outline-none focus:ring-2 ring-emerald-400/40"
-        placeholder="Hva skal gjøres?"
+        placeholder="What needs to be done?"
       />
     </div>
 
@@ -45,7 +45,7 @@
           name="dueDate"
           type="date"
           class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
-          placeholder="Forfallsdato"
+          placeholder="Due date"
         />
       </div>
 
@@ -57,7 +57,7 @@
           name="dueTime"
           type="time"
           class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
-          placeholder="Starttid"
+          placeholder="Start time"
         />
       </div>
 
@@ -69,7 +69,7 @@
           name="category"
           class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
         >
-          <option value="" disabled>Velg kategori</option>
+          <option value="" disabled>Select category</option>
           <option value="WORK">Work</option>
           <option value="HOME">Home</option>
           <option value="SCHOOL">School</option>
@@ -102,7 +102,7 @@
         name="link"
         type="url"
         class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
-        placeholder="Lenke (valgfritt)"
+        placeholder="Link (optional)"
       />
 
       <input
@@ -112,7 +112,7 @@
         name="note"
         type="text"
         class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
-        placeholder="Notat / beskrivelse"
+        placeholder="Note / description"
       />
     </div>
 
@@ -121,20 +121,20 @@
         (click)="add()"
         class="flex-1 rounded-lg bg-emerald-500 py-2 font-semibold text-slate-900 hover:bg-emerald-400 transition"
       >
-        + Legg til
+        + Add
       </button>
       <button
         (click)="clearCompleted()"
         class="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition"
       >
-        Fjern ferdige
+        Clear completed
       </button>
     </div>
   </div>
 
-  <!-- aktive -->
+  <!-- active -->
   <div class="space-y-3">
-    <h3 class="text-lg font-bold">Aktive</h3>
+    <h3 class="text-lg font-bold">Active</h3>
     <div
       *ngFor="let t of active()"
       class="rounded-lg border border-white/10 bg-white/5 p-4 flex items-start gap-3"
@@ -174,12 +174,12 @@
       </div>
     </div>
 
-    <div *ngIf="active().length === 0" class="text-white/60">Ingen aktive oppgaver.</div>
+    <div *ngIf="active().length === 0" class="text-white/60">No active tasks.</div>
   </div>
 
-  <!-- ferdige -->
+  <!-- completed -->
   <div class="space-y-3">
-    <h3 class="text-lg font-bold">Ferdige</h3>
+    <h3 class="text-lg font-bold">Completed</h3>
     <div
       *ngFor="let t of done()"
       class="rounded-lg border border-white/10 bg-white/5 p-4 opacity-70"
@@ -190,11 +190,11 @@
           (click)="toggle(t)"
           class="px-2 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30"
         >
-          Angre
+          Undo
         </button>
       </div>
     </div>
 
-    <div *ngIf="done().length === 0" class="text-white/60">Ingen ferdige oppgaver ennå.</div>
+    <div *ngIf="done().length === 0" class="text-white/60">No completed tasks yet.</div>
   </div>
 </div>
