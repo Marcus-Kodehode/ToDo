@@ -67,14 +67,14 @@
           (ngModelChange)="category.set($event)"
           [ngModelOptions]="{ standalone: true }"
           name="category"
-          class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+          class="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40 text-white"
         >
-          <option value="" disabled>Select category</option>
-          <option value="WORK">Work</option>
-          <option value="HOME">Home</option>
-          <option value="SCHOOL">School</option>
-          <option value="TRAINING">Training</option>
-          <option value="HEALTH">Health</option>
+          <option value="" disabled class="bg-slate-800">Select category</option>
+          <option value="WORK" class="bg-slate-800">Work</option>
+          <option value="HOME" class="bg-slate-800">Home</option>
+          <option value="SCHOOL" class="bg-slate-800">School</option>
+          <option value="TRAINING" class="bg-slate-800">Training</option>
+          <option value="HEALTH" class="bg-slate-800">Health</option>
         </select>
       </div>
 
@@ -84,12 +84,12 @@
           (ngModelChange)="priority.set($event)"
           [ngModelOptions]="{ standalone: true }"
           name="priority"
-          class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+          class="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40 text-white"
         >
-          <option value="" disabled>Set priority…</option>
-          <option value="high">🔥 High</option>
-          <option value="medium">⚡ Medium</option>
-          <option value="low">🌱 Low</option>
+          <option value="" disabled class="bg-slate-800">Set priority…</option>
+          <option value="high" class="bg-slate-800">🔥 High</option>
+          <option value="medium" class="bg-slate-800">⚡ Medium</option>
+          <option value="low" class="bg-slate-800">🌱 Low</option>
         </select>
       </div>
     </div>
