@@ -38,3 +38,9 @@ Løsning: Legg til eksplisitt bg-slate-800 eller lignende på select og option e
 
 Problem 3: localStorage med signals
 Løsning: Bruk signal.set() og signal() for å lese/skrive
+
+
+# Notater
+
+OAuth 2.0 / OpenID Connect fremfor Clerk?
+Sequel

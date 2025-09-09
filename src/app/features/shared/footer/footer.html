@@ -1,25 +1,36 @@
+<!-- src/app/features/shared/footer/footer.html -->
 <footer class="p-4 bg-black/20 backdrop-blur-sm mt-4">
   <div
     class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between text-sm text-gray-300"
   >
-    <!-- Venstre side: logo placeholder -->
+    <!-- Venstre: logo -->
     <div class="flex items-center gap-2 mb-2 sm:mb-0">
-      <div
-        class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-black font-bold"
-      >
-        L
-      </div>
-      <span class="font-semibold">Logo</span>
+      <img src="/images/icons/ToDo-logo.png" alt="ToDo logo" class="h-8 w-8 rounded-md" />
+      <span class="font-semibold">Min ToDo App</span>
     </div>
 
-    <!-- Midt: tekst -->
+    <!-- Midt -->
     <p class="opacity-70">© 2025 Min ToDo App. Alle rettigheter reservert.</p>
 
-    <!-- Høyre side: sosiale medier / lenker (placeholder nå) -->
-    <div class="flex gap-3 mt-2 sm:mt-0">
-      <a href="#" class="hover:text-white transition">Twitter</a>
-      <a href="#" class="hover:text-white transition">GitHub</a>
-      <a href="#" class="hover:text-white transition">Kontakt</a>
+    <!-- Høyre: sosiale -->
+    <div class="flex gap-4 mt-2 sm:mt-0">
+      <a href="#" class="hover:text-white transition flex items-center gap-1">
+        <img src="/images/icons/instagram.png" alt="Instagram" class="w-5 h-5" />
+        <span class="hidden sm:inline">Instagram</span>
+      </a>
+
+      <a href="#" class="hover:text-white transition flex items-center gap-1">
+        <img src="/images/icons/github.png" alt="GitHub" class="w-5 h-5" />
+        <span class="hidden sm:inline">GitHub</span>
+      </a>
+
+      <a
+        href="mailto:kontakt@todoapp.no"
+        class="hover:text-white transition flex items-center gap-1"
+      >
+        <img src="/images/icons/discord.png" alt="Discord" class="w-5 h-5" />
+        <span class="hidden sm:inline">Discord</span>
+      </a>
     </div>
   </div>
 </footer>

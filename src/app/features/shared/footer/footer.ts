@@ -1,3 +1,4 @@
+// src/app/features/shared/footer/footer.ts
 import { Component } from '@angular/core';
 
 @Component({

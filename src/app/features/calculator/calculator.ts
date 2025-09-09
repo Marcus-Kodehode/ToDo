@@ -1,43 +1,63 @@
 import { Component, signal, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgIf, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule, NgIf, NgForOf],
   templateUrl: './calculator.html',
 })
 export class Calculator {
   display = signal('0');
   history = signal<string[]>([]);
+
   private currentValue = '';
   private previousValue = '';
   private operator = '';
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardInput(event: KeyboardEvent) {
-    if (event.key >= '0' && event.key <= '9') {
-      this.inputNumber(event.key);
-    } else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
-      this.inputOperator(event.key);
-    } else if (event.key === 'Enter' || event.key === '=') {
+    const key = event.key;
+
+    if (key >= '0' && key <= '9') {
+      this.inputNumber(key);
+      return;
+    }
+
+    if (['+', '-', '*', '/'].includes(key)) {
+      this.inputOperator(key);
+      return;
+    }
+
+    if (key === 'Enter' || key === '=') {
       event.preventDefault();
       this.calculate();
-    } else if (event.key === 'Escape' || event.key === 'c' || event.key === 'C') {
+      return;
+    }
+
+    if (key === 'Escape' || key.toLowerCase() === 'c') {
       this.clear();
-    } else if (event.key === '.') {
+      return;
+    }
+
+    if (key === '.') {
       this.inputDecimal();
-    } else if (event.key === 'Backspace') {
+      return;
+    }
+
+    if (key === 'Backspace') {
       this.backspace();
+      return;
     }
   }
 
   inputNumber(num: string) {
-    if (this.display() === '0' || this.display() === 'Error') {
+    const d = this.display();
+    if (d === '0' || d === 'Error') {
       this.display.set(num);
     } else {
-      this.display.set(this.display() + num);
+      this.display.set(d + num);
     }
     this.currentValue = this.display();
   }
@@ -52,14 +72,17 @@ export class Calculator {
   }
 
   inputDecimal() {
-    if (!this.display().includes('.')) {
-      this.display.set(this.display() + '.');
+    let d = this.display();
+    if (d === 'Error') d = '0';
+    if (!d.includes('.')) {
+      this.display.set(d + '.');
     }
   }
 
   backspace() {
-    if (this.display() !== '0' && this.display().length > 1) {
-      this.display.set(this.display().slice(0, -1));
+    const d = this.display();
+    if (d !== '0' && d.length > 1) {
+      this.display.set(d.slice(0, -1));
       this.currentValue = this.display();
     } else {
       this.display.set('0');
@@ -113,7 +136,6 @@ export class Calculator {
           break;
       }
 
-      // Add to history
       const calculation = `${prev} ${this.operator} ${curr} = ${result}`;
       this.addToHistory(calculation);
 
@@ -125,11 +147,9 @@ export class Calculator {
   }
 
   private addToHistory(calculation: string) {
-    const currentHistory = this.history();
-    if (currentHistory.length >= 5) {
-      currentHistory.pop();
-    }
-    this.history.set([calculation, ...currentHistory]);
+    const list = this.history();
+    if (list.length >= 5) list.pop();
+    this.history.set([calculation, ...list]);
   }
 
   clear() {
