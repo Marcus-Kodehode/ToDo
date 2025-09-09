@@ -1,14 +1,46 @@
+<!--
+  Dette er velkomstsiden for applikasjonen.
+  Her registrerer brukeren sitt navn før de får tilgang til hovedfunksjonaliteten.
+-->
+
+<!-- 
+  HOVEDCONTAINER
+  Fyller hele skjermen og sentrerer innholdet vertikalt og horisontalt
+  Bruker en gradient bakgrunn for visuell effekt
+-->
 <div
   class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-800 text-white"
 >
+  <!-- 
+    INNHOLDSCONTAINER
+    Boks med glassmorfisme-effekt (gjennomsiktig bakgrunn med blur)
+    Begrenset bredde for bedre lesbarhet
+  -->
   <div class="w-full max-w-md bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8">
+    <!-- 
+      HEADER-SEKSJON
+      Viser velkomstmelding og app-beskrivelse
+    -->
     <div class="flex flex-col items-center space-y-3">
+      <!-- Velkomst-ikon -->
       <span class="text-4xl">✅</span>
+      
+      <!-- Hovedoverskrift -->
       <h1 class="text-2xl font-bold">What's your name?</h1>
+      
+      <!-- App-beskrivelse -->
       <p class="text-slate-300 text-center">Your personal Todo-list in stardust</p>
     </div>
 
+    <!-- 
+      INPUTSEKSJON
+      Inneholder navneinput og fortsett-knapp
+    -->
     <div class="mt-6 space-y-4">
+      <!-- 
+        Navneinput
+        Bruker ngModel for to-veis databinding med name-signalet
+      -->
       <input
         [(ngModel)]="name"
         type="text"
@@ -16,6 +48,10 @@
         class="w-full rounded-lg px-4 py-2 bg-slate-800/50 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500"
       />
 
+      <!-- 
+        Fortsett-knapp
+        Kaller save()-metoden når klikket
+      -->
       <button
         (click)="save()"
         class="w-full rounded-lg bg-emerald-500 py-2 font-semibold text-slate-900 hover:bg-emerald-400 transition"
@@ -25,3 +61,39 @@
     </div>
   </div>
 </div>
+
+<!--
+  FILBESKRIVELSE
+  ------------------------------
+  
+  Denne filen (start.html) er templaten for velkomstsiden i applikasjonen.
+  Den implementerer følgende funksjoner:
+  
+  1. Layout og Design:
+     - Responsivt design som fungerer på alle skjermstørrelser
+     - Moderne glassmorfisme-effekter
+     - Gradient bakgrunn for visuell appell
+     - Sentrert innhold for fokusert brukeropplevelse
+  
+  2. Brukerinteraksjon:
+     - Inputfelt for navn med placeholder
+     - Tydelig handlingsknapp
+     - Visuell feedback på interaksjoner
+     - Fokus-effekter for bedre tilgjengelighet
+  
+  3. Databinding:
+     - To-veis binding med name-signal via ngModel
+     - Event-binding for lagring av navn
+     - Reaktiv oppdatering av UI
+  
+  4. Brukeropplevelse:
+     - Klar hierarki i informasjonsvisning
+     - Intuitivt brukergrensesnitt
+     - Tydelig handlingsflyt
+     - Visuell veiledning
+  
+  Denne siden er kritisk for brukeropplevelsen da den er:
+  - Første kontaktpunkt med applikasjonen
+  - Ansvarlig for brukerregistrering
+  - Portalen til hovedfunksjonaliteten
+-->
