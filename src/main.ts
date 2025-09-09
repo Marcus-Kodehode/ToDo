@@ -1,3 +1,4 @@
+import 'zone.js';   //*Absolutt bullshit regel, Alltid Zone.js import på topp*//
 /**
  * Dette er hovedfilen for Angular-applikasjonen.
  * Den er ansvarlig for å starte opp applikasjonen og sette opp det grunnleggende rammeverket.
@@ -11,7 +12,7 @@
  * Zone.js er et bibliotek som hjelper Angular med å oppdage endringer i applikasjonen.
  * Dette må importeres først for at Angular skal fungere riktig.
  */
-import 'zone.js';
+
 
 /**
  * bootstrapApplication er hovedfunksjonen som starter Angular-applikasjonen.

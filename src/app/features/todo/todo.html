@@ -1,43 +1,71 @@
+<!--
+  Dette er hovedtemplaten for todo-visningen.
+  Den viser statistikk, skjema for nye oppgaver, og lister over aktive og fullførte oppgaver.
+-->
+
+<!-- 
+  HOVEDCONTAINER
+  Sentrert container med maksbredde og padding 
+-->
 <div class="max-w-4xl mx-auto p-6 space-y-6">
-  <!-- Stats -->
+  <!-- 
+    STATISTIKK-SEKSJON
+    Viser antall aktive og fullførte oppgaver, samt total fremgang 
+  -->
   <div class="rounded-xl border border-white/10 bg-white/5 p-6">
     <div class="flex flex-wrap gap-3 items-center justify-between">
+      <!-- Tittel -->
       <h2 class="text-xl font-bold">My Todo-list</h2>
+      
+      <!-- Statistikk-badges -->
       <div class="flex flex-wrap gap-2">
-        <span
-          class="px-2 py-1 text-sm rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30"
-        >
+        <!-- Aktive oppgaver -->
+        <span class="px-2 py-1 text-sm rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
           {{ active().length }} Active
         </span>
-        <span
-          class="px-2 py-1 text-sm rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30"
-        >
+        
+        <!-- Fullførte oppgaver -->
+        <span class="px-2 py-1 text-sm rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">
           {{ done().length }} Done
         </span>
-        <span
-          class="px-2 py-1 text-sm rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30"
-        >
+        
+        <!-- Fremdriftsprosent -->
+        <span class="px-2 py-1 text-sm rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30">
           {{ progress() }}% Progress
         </span>
       </div>
     </div>
   </div>
 
-  <!-- Form komponent -->
-  <app-todo-form (taskAdded)="addTask($event)" (clearCompleted)="clearCompleted()"></app-todo-form>
+  <!-- 
+    OPPGAVEFORM
+    Komponent for å legge til nye oppgaver og fjerne fullførte 
+  -->
+  <app-todo-form 
+    (taskAdded)="addTask($event)" 
+    (clearCompleted)="clearCompleted()"
+  ></app-todo-form>
 
-  <!-- Active tasks -->
+  <!-- 
+    AKTIVE OPPGAVER
+    Liste over oppgaver som ikke er fullført 
+  -->
   <div class="space-y-3">
     <h3 class="text-lg font-bold">Active</h3>
+    
+    <!-- Oppgave-loop -->
     <div
       *ngFor="let t of active()"
       class="rounded-lg border border-white/10 bg-white/5 p-4 flex items-start gap-3"
     >
       <div class="flex-1 min-w-0">
+        <!-- Oppgaveheader med tittel og handlinger -->
         <div class="flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
+            <!-- Oppgavetekst -->
             <h4 class="font-semibold truncate">{{ t.text }}</h4>
-            <!-- Priority indicator -->
+            
+            <!-- Prioritetsindikator med fargekodet ikon -->
             <span
               *ngIf="t.priority"
               [class.text-red-400]="t.priority === 'high'"
@@ -46,11 +74,14 @@
             >
               {{ t.priority === 'high' ? '🔥' : t.priority === 'medium' ? '⚡' : '🌱' }}
             </span>
-            <!-- Category badge -->
+            
+            <!-- Kategorietikett -->
             <span *ngIf="t.category" class="px-2 py-1 text-xs rounded bg-blue-500/20 text-blue-300">
               {{ t.category }}
             </span>
           </div>
+          
+          <!-- Handlingsknapper -->
           <div class="flex gap-1">
             <button
               (click)="toggle(t)"
@@ -66,37 +97,57 @@
             </button>
           </div>
         </div>
+
+        <!-- Oppgavedetaljer -->
         <div class="mt-2 text-sm text-white/60 flex flex-wrap gap-3">
+          <!-- Tidsinformasjon -->
           <span *ngIf="t.dueDate">📅 {{ t.dueDate }}</span>
           <span *ngIf="t.dueTime">⏱️ {{ t.dueTime }}</span>
+          
+          <!-- Lenke hvis tilgjengelig -->
           <a
             *ngIf="t.link"
             [href]="t.link"
             target="_blank"
             class="text-emerald-300 hover:text-emerald-200"
-            >🔗 Link</a
-          >
+          >🔗 Link</a>
         </div>
+
+        <!-- Notater/beskrivelse -->
         <p *ngIf="t.note" class="mt-2 text-sm text-white/70">{{ t.note }}</p>
       </div>
     </div>
-    <div *ngIf="active().length === 0" class="text-white/60">No active tasks.</div>
+
+    <!-- Melding når ingen aktive oppgaver finnes -->
+    <div *ngIf="active().length === 0" class="text-white/60">
+      No active tasks.
+    </div>
   </div>
 
-  <!-- Completed tasks -->
+  <!-- 
+    FULLFØRTE OPPGAVER
+    Liste over oppgaver som er markert som fullført 
+  -->
   <div class="space-y-3">
     <h3 class="text-lg font-bold">Completed</h3>
+    
+    <!-- Fullført oppgave-loop -->
     <div
       *ngFor="let t of done()"
       class="rounded-lg border border-white/10 bg-white/5 p-4 opacity-70"
     >
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
+          <!-- Oppgavetekst med gjennomstreking -->
           <h4 class="font-semibold line-through">{{ t.text }}</h4>
+          
+          <!-- Kategorietikett for fullførte oppgaver -->
           <span *ngIf="t.category" class="px-2 py-1 text-xs rounded bg-white/10 text-white/50">
             {{ t.category }}
           </span>
         </div>
+        
+        <!-- Angre-knapp -->
         <button
           (click)="toggle(t)"
           class="px-2 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30 transition"
@@ -105,6 +156,45 @@
         </button>
       </div>
     </div>
-    <div *ngIf="done().length === 0" class="text-white/60">No completed tasks yet.</div>
+
+    <!-- Melding når ingen fullførte oppgaver finnes -->
+    <div *ngIf="done().length === 0" class="text-white/60">
+      No completed tasks yet.
+    </div>
   </div>
 </div>
+
+<!--
+  FILBESKRIVELSE
+  ------------------------------
+  
+  Denne filen (todo.html) er templaten for todo-visningen i applikasjonen.
+  Den er strukturert i flere hovedseksjoner:
+  
+  1. Statistikk og Oversikt:
+     - Viser totalt antall oppgaver
+     - Separate tellere for aktive og fullførte
+     - Visualiserer total fremgang
+  
+  2. Oppgaveadministrasjon:
+     - Skjema for å legge til nye oppgaver
+     - Mulighet for å fjerne fullførte oppgaver
+  
+  3. Aktive Oppgaver:
+     - Detaljert visning av hver oppgave
+     - Prioritetsmarkering med ikoner og farger
+     - Kategorisering og merking
+     - Tidsfrister og tilleggsinformasjon
+     - Handlingsknapper for fullføring og sletting
+  
+  4. Fullførte Oppgaver:
+     - Forenklet visning av fullførte oppgaver
+     - Mulighet for å angre fullføring
+     - Visuell differensiering fra aktive oppgaver
+  
+  Templaten bruker:
+  - Tailwind CSS for styling
+  - Angular direktiver for betinget rendering
+  - Reaktive oppdateringer via signals
+  - Komponentbasert arkitektur
+-->
