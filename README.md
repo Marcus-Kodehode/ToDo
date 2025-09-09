@@ -1,59 +1,103 @@
-# Todo
+<div align="center">
+  <p>
+    <img src="/public/images/icons/MBlogo.png" alt="Personal Logo" width="150" />
+  </p>
+  <p>
+    <img src="/public/images/icons/ToDo-logo.png" alt="ToDo App Logo" width="150" />
+  </p>
+  
+  # ToDo App
+  
+  > En moderne og elegant ToDo-applikasjon bygget med Angular og Tailwind CSS
+  
+  [![Angular](https://img.shields.io/badge/Angular-18-dd1b16.svg)](https://angular.dev)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8.svg)](https://tailwindcss.com)
+  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+</div>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+## ✨ Hovedfunksjoner
 
-## Development server
+- 📝 Intuitivt grensesnitt for oppgavehåndtering
+- 🧮 Innebygd kalkulator for raske utregninger
+- 🌓 Moderne glass-morfisme design
+- 🎯 Påskeegg for den nysgjerrige
+- 📱 Responsivt design for alle enheter
 
-To start a local development server, run:
+## 🖼️ Skjermbilde
 
+<div align="center">
+  <img src="/public/images/screenshot.png" alt="ToDo App Screenshot" width="800" />
+</div>
+
+## 🚀 Kom i Gang
+
+1. **Klone prosjektet**
 ```bash
-ng serve
+git clone https://github.com/Marcus-Kodehode/ToDo.git
+cd ToDo
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. **Installer avhengigheter**
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+3. **Start utviklingsserver**
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+4. **Åpne nettleseren**
+```
+http://localhost:4200
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🛠️ Bygget Med
 
-## Running unit tests
+- **[Angular](https://angular.dev)** - Frontend rammeverk
+- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS rammeverk
+- **[TypeScript](https://www.typescriptlang.org)** - Programmeringsspråk
+- **[Angular Signals](https://angular.dev/guide/signals)** - Tilstandshåndtering
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📚 Dokumentasjon
+
+Prosjektet inneholder omfattende dokumentasjon i `/docs`-mappen:
+
+- [Oppsettguide](docs/angular-setup.md) - Hvordan sette opp prosjektet
+- [Mappestruktur](docs/mappestruktur.md) - Prosjektorganisering
+- [Feilsøking](docs/troubleshooting.md) - Vanlige problemer og løsninger
+- [Fremtidige Forbedringer](docs/future-improvements.md) - Planlagte funksjoner
+
+## 🧪 Testing
 
 ```bash
-ng test
+# Kjør enhetstester
+npm test
+
+# Kjør med coverage
+npm test -- --coverage
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## 📦 Bygg for Produksjon
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Bygget vil være tilgjengelig i `dist/`-mappen.
 
-## Additional Resources
+## 🤝 Bidrag
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Bidrag, problemer og feature-forespørsler er velkomne! Se [CONTRIBUTING.md](CONTRIBUTING.md) for hvordan du kan bidra.
+
+## 📝 Lisens
+
+Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE) filen for detaljer.
+
+---
+
+<div align="center">
+  <i>"One bug to find them, one fix to bring them all, and in the darkness bind them."</i>
+  <br>
+  <sub>Laget med ❤️ av Marcus Børresen</sub>
+</div>
