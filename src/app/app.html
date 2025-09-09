@@ -4,7 +4,7 @@
 
   <div
     *ngSwitchCase="'main'"
-    class="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-800 text-white"
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-800 text-white flex flex-col"
   >
     <app-header
       [userName]="userName()"
@@ -12,9 +12,12 @@
       (viewChange)="setMainView($event)"
     ></app-header>
 
-    <div class="p-4">
+    <div class="flex-1 p-4">
       <app-todo *ngIf="mainView() === 'todo'"></app-todo>
       <app-calculator *ngIf="mainView() === 'calculator'"></app-calculator>
     </div>
+
+    <app-footer></app-footer>
+    <!-- 👈 ny footer -->
   </div>
 </ng-container>

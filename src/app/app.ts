@@ -6,6 +6,7 @@ import { Todo } from './features/todo/todo';
 import { Calculator } from './features/calculator/calculator';
 import { EasterEgg } from './features/easter-egg/easter-egg';
 import { Header } from './features/shared/header/header';
+import { Footer } from './features/shared/footer/footer';
 
 type View = 'start' | 'main' | 'easter-egg';
 type MainView = 'todo' | 'calculator';
@@ -13,7 +14,17 @@ type MainView = 'todo' | 'calculator';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgIf, NgSwitch, NgSwitchCase, Start, Todo, Calculator, EasterEgg, Header],
+  imports: [
+    NgIf,
+    NgSwitch,
+    NgSwitchCase,
+    Start,
+    Todo,
+    Calculator,
+    EasterEgg,
+    Header,
+    Footer, // 👈 riktig her
+  ],
   templateUrl: './app.html',
 })
 export class App {
