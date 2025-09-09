@@ -1,8 +1,38 @@
+<!--
+  Dette er header-templaten som viser applikasjonens toppbanner
+  med brukernavigasjon og personlig hilsen.
+-->
+
+<!-- 
+  HOVEDCONTAINER
+  Semi-transparent bakgrunn med blur-effekt for glassmorfisme
+  Padding for spacing og visuell balanse
+-->
 <div class="p-4 bg-black/20 backdrop-blur-sm">
+  <!-- 
+    INNHOLDSCONTAINER
+    Maksbredde for lesbarhet og sentrert innhold
+    Flex-layout for å plassere elementer på hver sin side
+  -->
   <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <!-- 
+      VELKOMSTHILSEN
+      Dynamisk visning av brukernavn med emoji
+      Bruker signal-verdi fra komponenten
+    -->
     <h1 class="text-2xl font-bold">Hei, {{ userName() }}! 👋</h1>
     
+    <!-- 
+      NAVIGASJONSKNAPPER
+      Flex-container med mellomrom mellom knappene
+    -->
     <div class="flex gap-2">
+      <!-- 
+        PLANLEGGER-KNAPP
+        - Click event sender 'todo' til parent
+        - Dynamisk styling basert på aktiv visning
+        - Visuell feedback via hover og active states
+      -->
       <button 
         (click)="viewChange.emit('todo')"
         [class.bg-emerald-500]="activeView() === 'todo'"
@@ -11,6 +41,13 @@
       >
         📝 Planlegger
       </button>
+
+      <!-- 
+        KALKULATOR-KNAPP
+        - Click event sender 'calculator' til parent
+        - Dynamisk styling basert på aktiv visning
+        - Konsistent styling med planlegger-knapp
+      -->
       <button 
         (click)="viewChange.emit('calculator')"
         [class.bg-emerald-500]="activeView() === 'calculator'"
@@ -22,3 +59,40 @@
     </div>
   </div>
 </div>
+
+<!--
+  FILBESKRIVELSE
+  ------------------------------
+  
+  Denne filen (header.html) implementerer brukergrensesnittet
+  for applikasjonens header/toppbanner.
+  
+  1. Layout og Design:
+     - Glassmorfisme-effekt med transparent bakgrunn
+     - Responsivt design med maksbredde
+     - Balansert spacing og padding
+     - Flex-basert layout for elementplassering
+  
+  2. Brukerinteraksjon:
+     - Tydelige navigasjonsknapper
+     - Visuell feedback på aktiv tilstand
+     - Smooth transitions for interaksjoner
+     - Intuitiv plassering av elementer
+  
+  3. Databinding:
+     - Dynamisk brukernavn via signals
+     - Event-binding for navigasjon
+     - Betinget styling basert på aktiv visning
+  
+  4. Visuell Hierarki:
+     - Fremhevet velkomsthilsen
+     - Tydelig navigasjonsmeny
+     - Konsistent styling
+     - Emojis for visuell forsterkning
+  
+  Templaten er kritisk for:
+  - Brukernavigasjon
+  - Personlig brukeropplevelse
+  - Visuell identitet
+  - Applikasjonsflyt
+-->

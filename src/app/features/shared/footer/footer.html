@@ -1,47 +1,61 @@
-<!-- src/app/features/shared/footer/footer.html -->
+<!-- 
+  Footer Component Template
+  -----------------------
+  This template defines the footer layout with three main sections:
+  1. Left: App branding (logo and name)
+  2. Middle: Copyright information
+  3. Right: Social media links
+  
+  The footer uses a responsive design that stacks on mobile and aligns horizontally on larger screens.
+-->
 <footer class="p-4 bg-black/20 backdrop-blur-sm mt-4">
+  <!-- Main container with responsive layout -->
   <div
     class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between text-sm text-gray-300"
   >
-    <!-- Venstre: logo -->
+    <!-- Left Section: App Branding -->
     <div class="flex items-center gap-2 mb-2 sm:mb-0">
       <img src="/images/icons/ToDo-logo.png" alt="ToDo logo" class="h-8 w-8 rounded-md" />
-      <span class="font-semibold">Min ToDo App</span>
+      <span class="font-semibold">ToDo App</span>
     </div>
 
-    <!-- Midt -->
-    <p class="opacity-70">© 2025 Min ToDo App. Alle rettigheter reservert.</p>
+    <!-- Middle Section: Copyright -->
+    <p class="opacity-70">© 2025 ToDo App. All rights reserved.</p>
 
-    <!-- Høyre: sosiale medier -->
+    <!-- Right Section: Social Media Links -->
     <div class="flex gap-4 mt-2 sm:mt-0">
-      <!-- Instagram -->
+      <!-- Instagram Link -->
+      <!-- Instagram social link with icon and text -->
       <a
         href="https://www.instagram.com/marcusboerresen/"
         target="_blank"
         rel="noopener noreferrer"
         class="hover:text-white transition flex items-center gap-1"
+        title="Follow on Instagram"
       >
         <img src="/images/icons/instagram.png" alt="Instagram" class="w-5 h-5" />
         <span class="hidden sm:inline">Instagram</span>
       </a>
 
-      <!-- GitHub -->
+      <!-- GitHub profile link with icon and text -->
       <a
         href="https://github.com/Marcus-Kodehode"
         target="_blank"
         rel="noopener noreferrer"
         class="hover:text-white transition flex items-center gap-1"
+        title="View GitHub Profile"
       >
         <img src="/images/icons/github.png" alt="GitHub" class="w-5 h-5" />
         <span class="hidden sm:inline">GitHub</span>
       </a>
 
-      <!-- Discord -->
+      <!-- Discord contact link with icon and text -->
       <a
         href="https://discordapp.com/users/1328294517585084447"
         target="_blank"
         rel="noopener noreferrer"
         class="hover:text-white transition flex items-center gap-1"
+        title="Connect on Discord"
       >
         <img src="/images/icons/discord.png" alt="Discord" class="w-5 h-5" />
         <span class="hidden sm:inline">Discord</span>
@@ -49,3 +63,29 @@
     </div>
   </div>
 </footer>
+
+<!-- 
+  Footer Template Documentation
+  ---------------------------
+  Structure:
+  - Responsive container with max width and flexible layout
+  - Three sections aligned horizontally on desktop, stacked on mobile
+  - Social media links with hover effects and accessibility features
+  
+  Styling:
+  - Uses TailwindCSS utilities for styling
+  - Semi-transparent background with blur effect
+  - Responsive text sizing and spacing
+  - Hover animations on interactive elements
+  
+  Accessibility:
+  - Alt text for all images
+  - Title attributes for links
+  - Proper contrast for text
+  - Semantic HTML structure
+  
+  Responsive Behavior:
+  - Mobile: Vertical stack layout
+  - Desktop: Horizontal three-column layout
+  - Social media text labels hidden on mobile
+-->
