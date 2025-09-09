@@ -22,3 +22,89 @@
       </div>
     </div>
   </div>
+
+  <!-- Form komponent -->
+  <app-todo-form (taskAdded)="addTask($event)" (clearCompleted)="clearCompleted()"></app-todo-form>
+
+  <!-- Active tasks -->
+  <div class="space-y-3">
+    <h3 class="text-lg font-bold">Active</h3>
+    <div
+      *ngFor="let t of active()"
+      class="rounded-lg border border-white/10 bg-white/5 p-4 flex items-start gap-3"
+    >
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <h4 class="font-semibold truncate">{{ t.text }}</h4>
+            <!-- Priority indicator -->
+            <span
+              *ngIf="t.priority"
+              [class.text-red-400]="t.priority === 'high'"
+              [class.text-yellow-400]="t.priority === 'medium'"
+              [class.text-green-400]="t.priority === 'low'"
+            >
+              {{ t.priority === 'high' ? '🔥' : t.priority === 'medium' ? '⚡' : '🌱' }}
+            </span>
+            <!-- Category badge -->
+            <span *ngIf="t.category" class="px-2 py-1 text-xs rounded bg-blue-500/20 text-blue-300">
+              {{ t.category }}
+            </span>
+          </div>
+          <div class="flex gap-1">
+            <button
+              (click)="toggle(t)"
+              class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/30 transition"
+            >
+              Done
+            </button>
+            <button
+              (click)="remove(t)"
+              class="px-2 py-1 rounded bg-red-500/20 text-red-300 border border-red-500/30 hover:bg-red-500/30 transition"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+        <div class="mt-2 text-sm text-white/60 flex flex-wrap gap-3">
+          <span *ngIf="t.dueDate">📅 {{ t.dueDate }}</span>
+          <span *ngIf="t.dueTime">⏱️ {{ t.dueTime }}</span>
+          <a
+            *ngIf="t.link"
+            [href]="t.link"
+            target="_blank"
+            class="text-emerald-300 hover:text-emerald-200"
+            >🔗 Link</a
+          >
+        </div>
+        <p *ngIf="t.note" class="mt-2 text-sm text-white/70">{{ t.note }}</p>
+      </div>
+    </div>
+    <div *ngIf="active().length === 0" class="text-white/60">No active tasks.</div>
+  </div>
+
+  <!-- Completed tasks -->
+  <div class="space-y-3">
+    <h3 class="text-lg font-bold">Completed</h3>
+    <div
+      *ngFor="let t of done()"
+      class="rounded-lg border border-white/10 bg-white/5 p-4 opacity-70"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <h4 class="font-semibold line-through">{{ t.text }}</h4>
+          <span *ngIf="t.category" class="px-2 py-1 text-xs rounded bg-white/10 text-white/50">
+            {{ t.category }}
+          </span>
+        </div>
+        <button
+          (click)="toggle(t)"
+          class="px-2 py-1 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30 transition"
+        >
+          Undo
+        </button>
+      </div>
+    </div>
+    <div *ngIf="done().length === 0" class="text-white/60">No completed tasks yet.</div>
+  </div>
+</div>
