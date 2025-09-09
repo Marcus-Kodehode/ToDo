@@ -1,23 +1,87 @@
+<!--
+  Dette er hovedtemplaten for applikasjonen.
+  Den håndterer routing og visning av ulike komponenter basert på applikasjonens tilstand.
+-->
+
+<!-- 
+  HOVEDNAVIGASJON
+  Bruker ngSwitch for å vise riktig view basert på currentView-signalet 
+-->
 <ng-container [ngSwitch]="currentView()">
+  <!-- Start-visning - vises når brukeren ikke er registrert -->
   <app-start *ngSwitchCase="'start'"></app-start>
+
+  <!-- Easter Egg-visning - vises når easter egg er aktivert -->
   <app-easter-egg *ngSwitchCase="'easter-egg'"></app-easter-egg>
 
+  <!-- 
+    HOVEDVISNING
+    Vises når brukeren er registrert og aktiv
+    Inneholder header, hovedinnhold og footer
+  -->
   <div
     *ngSwitchCase="'main'"
     class="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-slate-800 text-white flex flex-col"
   >
+    <!-- 
+      HEADER-KOMPONENT
+      Mottar brukerdata og håndterer navigasjon mellom todo og kalkulator
+      - userName: Sender brukerens navn til header
+      - activeView: Sender aktiv visning (todo/calculator)
+      - viewChange: Håndterer bytte mellom visninger
+    -->
     <app-header
       [userName]="userName()"
       [activeView]="mainView()"
       (viewChange)="setMainView($event)"
     ></app-header>
 
+    <!-- 
+      HOVEDINNHOLD
+      Viser enten todo-liste eller kalkulator basert på mainView-signalet
+    -->
     <div class="flex-1 p-4">
+      <!-- Todo-visning -->
       <app-todo *ngIf="mainView() === 'todo'"></app-todo>
+      
+      <!-- Kalkulator-visning -->
       <app-calculator *ngIf="mainView() === 'calculator'"></app-calculator>
     </div>
 
+    <!-- 
+      FOOTER-KOMPONENT
+      Viser footer med navigasjonslenker og informasjon
+    -->
     <app-footer></app-footer>
-    <!-- 👈 ny footer -->
   </div>
 </ng-container>
+
+<!--
+  FILBESKRIVELSE
+  ------------------------------
+  
+  Denne filen (app.html) er hovedtemplaten for Angular-applikasjonen.
+  Den har følgende hovedfunksjoner:
+
+  1. Routing og Navigasjon:
+     - Håndterer switching mellom hovedvisninger (start, main, easter-egg)
+     - Styrer visning av underkomponenter i hovedvisningen
+  
+  2. Layoutstruktur:
+     - Definerer grunnleggende app-layout med flexbox
+     - Setter opp bakgrunn og grunnstiler
+     - Organiserer komponenter i en logisk struktur
+  
+  3. Komponentintegrasjon:
+     - Integrerer alle hovedkomponenter (header, todo, calculator, footer)
+     - Håndterer datautveksling mellom komponenter
+     - Setter opp event-binding for brukerinteraksjon
+  
+  4. Betinget Rendering:
+     - Bruker ngSwitch for hovednavigasjon
+     - Bruker ngIf for dynamisk innholdshåndtering
+     - Viser riktig innhold basert på applikasjonens tilstand
+  
+  Templaten fungerer som det visuelle rammeverket for applikasjonen
+  og binder sammen alle komponenter til en helhetlig brukeropplevelse.
+-->
