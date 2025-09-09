@@ -99,5 +99,5 @@ Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE) filen 
 <div align="center">
   <i>"One bug to find them, one fix to bring them all, and in the darkness bind them."</i>
   <br>
-  <sub>Laget med ❤️ av Marcus Børresen</sub>
+  <sub>Laget med ❤️ av MaBo Developments</sub>
 </div>
