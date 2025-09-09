@@ -1,0 +1,77 @@
+<div class="rounded-xl border border-white/10 bg-white/5 p-6">
+  <div class="mb-4">
+    <input
+      [(ngModel)]="newText"
+      name="task"
+      class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-3 outline-none focus:ring-2 ring-emerald-400/40"
+      placeholder="What needs to be done?"
+    />
+  </div>
+
+  <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+    <input
+      [(ngModel)]="dueDate"
+      type="date"
+      class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+    />
+
+    <input
+      [(ngModel)]="dueTime"
+      type="time"
+      class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+    />
+
+    <select
+      [(ngModel)]="category"
+      class="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40 text-white"
+    >
+      <option value="" disabled class="bg-slate-800">Select category</option>
+      <option value="WORK" class="bg-slate-800">Work</option>
+      <option value="HOME" class="bg-slate-800">Home</option>
+      <option value="SCHOOL" class="bg-slate-800">School</option>
+      <option value="TRAINING" class="bg-slate-800">Training</option>
+      <option value="HEALTH" class="bg-slate-800">Health</option>
+    </select>
+
+    <select
+      [(ngModel)]="priority"
+      class="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40 text-white"
+    >
+      <option value="" disabled class="bg-slate-800">Set priority…</option>
+      <option value="high" class="bg-slate-800">🔥 High</option>
+      <option value="medium" class="bg-slate-800">⚡ Medium</option>
+      <option value="low" class="bg-slate-800">🌱 Low</option>
+    </select>
+  </div>
+
+  <div class="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+    <input
+      [(ngModel)]="link"
+      type="url"
+      class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+      placeholder="Link (optional)"
+    />
+
+    <input
+      [(ngModel)]="note"
+      type="text"
+      class="w-full rounded-lg border border-white/10 bg-white/10 px-3 py-2 outline-none focus:ring-2 ring-emerald-400/40"
+      placeholder="Note / description"
+    />
+  </div>
+
+  <div class="mt-5 flex gap-3">
+    <button
+      (click)="onAdd()"
+      class="flex-1 rounded-lg bg-emerald-500 py-2 font-semibold text-slate-900 hover:bg-emerald-400 transition"
+    >
+      + Add
+    </button>
+    <button
+      (click)="clearCompleted.emit()"
+      class="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition"
+    >
+      Clear completed
+    </button>
+  </div>
+</div>

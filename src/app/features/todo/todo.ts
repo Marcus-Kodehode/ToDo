@@ -1,14 +1,13 @@
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-
 import { TodoStore } from '../../services/todo.store';
-import { Task } from '../../models/task'; // <- fix import
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [FormsModule, NgFor, NgIf],
+  imports: [FormsModule, NgFor, NgIf], // IKKE TodoForm eller TaskList
   templateUrl: './todo.html',
 })
 export class Todo {
