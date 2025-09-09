@@ -1,14 +1,67 @@
+<!--
+  Dette er hovedHTML-filen for Angular-applikasjonen.
+  Den fungerer som inngangsportalen for hele applikasjonen.
+-->
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Todo</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <!-- 
+    HODE-SEKSJONEN
+    Inneholder metadata, tittel og ressurs-lenker
+  -->
+  <head>
+    <!-- Definerer tegnsettet som brukes i dokumentet -->
+    <meta charset="utf-8">
+    
+    <!-- Applikasjonens tittel som vises i nettleserens fane -->
+    <title>Todo</title>
+    
+    <!-- Base-URL for alle relative lenker i applikasjonen -->
+    <base href="/">
+    
+    <!-- Viewport-innstillinger for responsivt design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Favicon (ikonet som vises i nettleserens fane) -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- TailwindCSS - Styling rammeverk -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <!-- 
+    BODY-SEKSJONEN
+    Dette er hvor Angular-applikasjonen vil rendres
+  -->
+  <body>
+    <!-- 
+      Angular rot-komponenten
+      Dette er monteringspunktet for hele Angular-applikasjonen.
+      Angular vil erstatte dette elementet med applikasjonens innhold.
+    -->
+    <app-root></app-root>
+  </body>
 </html>
+
+<!--
+  FILBESKRIVELSE
+  ------------------------------
+  
+  Denne filen (index.html) er hovedHTML-dokumentet for Angular-applikasjonen.
+  Den har følgende hovedfunksjoner:
+  
+  1. Definerer grunnleggende HTML-struktur
+  2. Setter opp nødvendige meta-tagger for riktig visning
+  3. Laster inn eksterne ressurser (som TailwindCSS)
+  4. Gir Angular et monteringspunkt (<app-root>) for applikasjonen
+  
+  Viktige komponenter:
+  - DOCTYPE og språkdeklarasjon
+  - Meta-tagger for tegnsett og viewport
+  - Base href for routing
+  - Favicon for visuell identifikasjon
+  - TailwindCSS for styling
+  - App-root element for Angular-montering
+  
+  Dette dokumentet er det første som lastes når brukeren besøker nettsiden,
+  og det danner grunnlaget for resten av applikasjonen.
+-->
