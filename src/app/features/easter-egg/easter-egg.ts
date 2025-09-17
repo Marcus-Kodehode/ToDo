@@ -254,8 +254,12 @@ Door unlocked. Walk through — or hesitate and lose it.`;
     this.state = 'quiz';
     this.idx = 0;
 
-    // Shuffler spørsmål + svarrekkefølge
-    this.questions = this.shuffleArray(this.baseQuestions).map((q) => this.shuffleQuestion(q));
+    // 🔒 Shuffle ONLY the questions (keep choices order intact)
+    this.questions = this.shuffleArray(this.baseQuestions).map((q) => ({
+      text: q.text,
+      choices: [...q.choices], // behold rekkefølgen
+      answerIndex: q.answerIndex, // peker fortsatt riktig
+    }));
 
     this.startQuestionTimer();
   }
