@@ -52,53 +52,58 @@ Door unlocked. Walk through — or hesitate and lose it.`;
 
   // --- Quiz ---
   private baseQuestions: Question[] = [
-    // 1) Dine to
+    // 1) Your two
     {
-      text: 'Hva var Marcus sitt første virkelige Next prosjekt?',
-      choices: ['Stardust', 'Hobolator', 'TaskForge', 'Nebula Notes'],
+      text: "What was Marcus's first real Next.js project?",
+      choices: ['Tasting-Next', 'Hobolator', 'TaskForce', 'VacationHelper'],
       answerIndex: 1,
     },
     {
-      text: 'Hvem er verdens beste skuespiller?',
+      text: "Who is the world's greatest actor?",
       choices: ['Steven Seagal', 'Nicolas Cage', 'Tommy Wiseau', 'Chuck Norris'],
       answerIndex: 0,
     },
 
-    // 2) Angular (4 stk)
+    // 2) Angular (4)
     {
-      text: 'I et standalone component, hvor legger du moduler du trenger (f.eks. CommonModule)?',
-      choices: ['I NgModule.declarations', 'I @Component.imports', 'I providers', 'I bootstrap'],
+      text: 'In a standalone component, where do you include the modules you need (e.g., CommonModule)?',
+      choices: [
+        'In NgModule.declarations',
+        'In @Component.imports',
+        'In providers',
+        'In bootstrap',
+      ],
       answerIndex: 1,
     },
     {
-      text: 'Hva gjør @Injectable({ providedIn: "root" })?',
+      text: 'What does @Injectable({ providedIn: "root" }) do?',
       choices: [
-        'Logger alle kall til servicen',
-        'Laster servicen kun i lazy routes',
-        'Registrerer servicen globalt i root injector',
-        'Gjør servicen ikke tree-shakeable',
+        'Logs all calls to the service',
+        'Loads the service only in lazy routes',
+        'Registers the service globally in the root injector',
+        'Makes the service not tree-shakeable',
       ],
       answerIndex: 2,
     },
     {
-      text: 'Hvorfor brukte vi NgZone.runOutsideAngular() i typewriteren?',
+      text: 'Why did we use NgZone.runOutsideAngular() for the typewriter?',
       choices: [
-        'For å rendre på serveren',
-        'For å tvinge full page reload',
-        'For å dele state mellom komponenter',
-        'For å unngå unødvendig change detection per frame',
+        'To render on the server',
+        'To force a full page reload',
+        'To share state between components',
+        'To avoid unnecessary change detection on every frame',
       ],
       answerIndex: 3,
     },
     {
-      text: 'Hvor plasseres statiske filer (mp3) for å bli servert som /sounds/... i denne appen?',
+      text: 'Where do you place static files (mp3) to be served as /sounds/... in this app?',
       choices: ['src/assets/', 'public/', 'node_modules/', 'src/environments/'],
       answerIndex: 1,
     },
 
-    // 3) Diverse (4 stk)
+    // 3) Misc (4)
     {
-      text: 'Tailwind: hvordan sentrerer du innhold både horisontalt og vertikalt i en container?',
+      text: 'Tailwind: how do you center content both horizontally and vertically in a container?',
       choices: [
         'justify-between items-center',
         'content-center justify-center',
@@ -108,17 +113,17 @@ Door unlocked. Walk through — or hesitate and lose it.`;
       answerIndex: 2,
     },
     {
-      text: 'TypeScript: hva gjør "as const"?',
+      text: 'TypeScript: what does "as const" do?',
       choices: [
-        'Gjør literal-verdier readonly og presiserer typene',
-        'Caster til any',
-        'Slår på strictNullChecks',
-        'Fjerner unioner',
+        'Makes literal values readonly and narrows their types',
+        'Casts to any',
+        'Enables strictNullChecks',
+        'Removes unions',
       ],
       answerIndex: 0,
     },
     {
-      text: 'Git: hvilken kommando oppretter og bytter til ny branch "feature/egg"?',
+      text: 'Git: which command creates and switches to a new branch "feature/egg"?',
       choices: [
         'git branch feature/egg',
         'git switch feature/egg',
@@ -128,7 +133,7 @@ Door unlocked. Walk through — or hesitate and lose it.`;
       answerIndex: 3,
     },
     {
-      text: 'JavaScript: hva returnerer typeof null?',
+      text: 'JavaScript: what does typeof null return?',
       choices: ['"null"', '"undefined"', '"object"', '"number"'],
       answerIndex: 2,
     },
