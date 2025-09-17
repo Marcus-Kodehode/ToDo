@@ -1,19 +1,121 @@
+<!-- Bakgrunn -->
 <div
-  class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-pink-900 to-purple-800"
+  class="relative min-h-screen text-white bg-gradient-to-br from-purple-950 via-black to-red-900"
 >
-  <div class="text-center">
+  <!-- INTRO – modal -->
+  <div
+    *ngIf="state === 'intro'"
+    class="fixed inset-0 flex items-center justify-center p-6 bg-black/80"
+  >
+    <div
+      class="w-full max-w-2xl p-6 border shadow-2xl bg-white/5 backdrop-blur-md rounded-xl border-white/10"
+    >
+      <h2 class="mb-4 text-2xl font-bold">I want to play a game</h2>
+
+      <pre
+        class="p-4 font-mono text-sm leading-6 whitespace-pre-wrap border rounded-lg bg-black/40 border-white/10">
+{{ typed }}<span class="animate-pulse">▋</span>
+      </pre>
+
+      <div class="flex items-center justify-end gap-3 mt-6">
+        <button (click)="startIntro()" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20">
+          ▶ Start lyd / Replay
+        </button>
+        <button
+          (click)="beginQuiz()"
+          [disabled]="!canStartQuiz"
+          class="px-5 py-2 font-semibold rounded-lg bg-emerald-500 text-slate-900 hover:bg-emerald-400 disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          Start quiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div *ngIf="state === 'quiz'" class="max-w-2xl p-6 mx-auto">
+    <div class="flex items-center justify-between mb-4">
+      <div class="text-sm text-white/70">Question {{ idx + 1 }} / {{ questions.length }}</div>
+      <div class="text-sm">
+        Time left: <span class="font-mono">{{ timeLeft }}s</span>
+      </div>
+    </div>
+
+    <div class="p-6 border shadow bg-white/5 rounded-xl border-white/10">
+      <h3 class="mb-4 text-xl font-semibold">{{ questions[idx].text }}</h3>
+      <div class="grid gap-3">
+        <button
+          *ngFor="let opt of questions[idx].choices; let i = index"
+          (click)="answer(i)"
+          class="px-4 py-3 text-left transition border rounded-lg bg-white/10 hover:bg-white/20 border-white/10"
+        >
+          {{ opt }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOSE / COOL-DOWN (enkeltinstans) -->
+  <div *ngIf="state === 'lose' || state === 'cooldown'" class="max-w-3xl p-6 mx-auto">
+    <h2 class="mb-3 text-3xl font-extrabold tracking-wide text-red-400">YOU LOSE</h2>
+
+    <div class="w-full h-3 mb-3 rounded bg-white/10">
+      <div class="h-3 bg-red-500 rounded" [style.width.%]="progress"></div>
+    </div>
+
+    <div
+      class="h-64 p-4 overflow-hidden font-mono text-green-400 border rounded-lg bg-black/70 border-green-900/40"
+    >
+      <div class="h-full space-y-1 overflow-y-auto">
+        <div *ngFor="let line of logs">{{ line }}</div>
+      </div>
+    </div>
+
+    <!-- Lose-typewriter under konsollen -->
+    <pre
+      class="p-4 mt-4 font-mono text-sm leading-6 whitespace-pre-wrap border rounded-lg bg-black/40 border-white/10 text-white/90">
+{{ typedLose }}<span class="animate-pulse" *ngIf="state==='lose'">▋</span>
+  </pre>
+
+    <div class="flex items-center gap-3 mt-6">
+      <button
+        *ngIf="state === 'cooldown'"
+        (click)="tryAgain()"
+        class="px-5 py-2 rounded-lg bg-white/20 hover:bg-white/30"
+      >
+        Try again
+      </button>
+      <span *ngIf="state === 'lose'" class="text-sm text-white/60">Initializing payload…</span>
+    </div>
+  </div>
+  <!-- WIN -->
+  <div
+    *ngIf="state === 'win'"
+    class="min-h-[60vh] flex flex-col items-center justify-center text-center px-6"
+  >
     <h1
-      class="text-6xl font-bold text-transparent bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text animate-pulse"
+      class="text-5xl font-extrabold text-transparent bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text animate-pulse"
     >
       🎉 CONGRATULATIONS JOAKIM! 🎉
     </h1>
-    <p class="mt-4 text-xl text-white/80">You found the secret page!</p>
 
-    <button
-      (click)="goBack()"
-      class="mt-8 px-6 py-3 bg-white/20 rounded-lg hover:bg-white/30 transition"
-    >
-      Back to app
-    </button>
+    <!-- WIN typewriter-tekst synket med voice3 -->
+    <pre
+      class="w-full max-w-2xl p-4 mt-6 font-mono text-sm leading-6 whitespace-pre-wrap border bg-white/5 border-white/10 rounded-xl text-white/90">
+{{ typedWin }}<span class="animate-pulse" *ngIf="state==='win'">▋</span>
+  </pre>
+
+    <div class="flex items-center gap-3 mt-8">
+      <!-- Replay-knapp i tilfelle autoplay blir blokkert -->
+      <button
+        (click)="startWinNarration()"
+        class="px-5 py-2 rounded-lg bg-white/10 hover:bg-white/20"
+      >
+        ▶ Play voice / Replay
+      </button>
+      <button (click)="goBack()" class="px-6 py-3 rounded-lg bg-white/20 hover:bg-white/30">
+        Back to app
+      </button>
+    </div>
   </div>
 </div>
